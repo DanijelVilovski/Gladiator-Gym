@@ -1,0 +1,26 @@
+a{
+    font-size: 24px;
+    font-weight:500;
+    color:white;
+    margin: 0px 20px;
+}
+
+.nav-link:focus, .nav-link:hover {
+    color: #ffd105;
+}
+nav {
+    background: rgb(26, 25, 25, 0.7);   
+}
+
+button {
+    color: white;
+    font-size: 24px;
+} 
+
+button:hover{
+    color: #ffd105;
+}
+
+.navbar-brand{
+    margin-right: 40px;
+}

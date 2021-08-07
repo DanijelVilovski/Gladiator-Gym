@@ -1,33 +1,47 @@
+const path = require("path");
 const express = require('express');
+const bodyParser = require("body-parser");
 const mongoose = require('mongoose');
-const User = require('./database/models/user');
-const Membership = require('./database/models/membership');
+
+const coursesRoutes = require('./routes/courses');
+const usersRoutes = require('./routes/user');
+const ordersRoutes = require('./routes/orders');
 
 //express app
 const app = express();
 
 //connect to mongodb
-const dbURI = 'mongodb+srv://danijel:test1234@cluster0.myqfw.mongodb.net/WEB_Projekat_BazaPodataka?retryWrites=true&w=majority';
-mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then((result) => app.listen(3000))
-    .catch((err) => console.log(err));
+const dbUPI = 'mongodb+srv://danijel:wO0tsn2RbSa4P6Ic@cluster0.myqfw.mongodb.net/WEB-Projekat?retryWrites=true&w=majority';
+mongoose.connect(dbUPI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => {
+    console.log('Connected to database!');
+  })
+  .catch((err) => {
+    console.log(err);
+  }); 
 
-app.get('/add-user', (req, res) => {
-    const user = new User({
-        name: 'Danijel',
-        surname: 'Vilovski',
-        email: 'danivilovski@gmail.com',
-        password: 'password'
-    });
-    user.save()
-        .then((result) =>{
-            res.send(result)
-        })
-        .catch((err) =>{
-            console.log(err)
-        });
-})
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use("/images", express.static(path.join("../Backend/images")));
 
-app.get('/', function (req, res) {
-    res.send('Ideeeee gas');
-})
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  //dozvola za pristup resursima na serveru od strane drugih domena
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+  );
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, PATCH, PUT, DELETE, OPTIONS"
+  );
+  //dozvovavanje dodatnih headera, metoda
+  next();
+});
+
+app.use("/api/courses", coursesRoutes);
+app.use("/api/user", usersRoutes);
+app.use("/api/orders", ordersRoutes);
+
+
+module.exports = app;

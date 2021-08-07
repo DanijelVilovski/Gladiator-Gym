@@ -1,0 +1,12 @@
+.example-card {
+    margin-top: 110px;
+    display: inline-block;
+    max-width: 400px;
+    background-color: #ced4da;
+    color: #424242;
+}
+
+#noAdded {
+    text-align: center;
+    padding-top: 20px;
+}

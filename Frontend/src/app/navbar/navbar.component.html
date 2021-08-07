@@ -1,21 +1,27 @@
 <div class="bs-example">
-    <nav class="navbar navbar-expand-md navbar-light bg-light">
-        <a href="#" class="navbar-brand">
-            <img src="/examples/images/logo.svg" height="28" alt="CoolBrand">
-        </a>
+    <nav class="navbar fixed-top navbar-expand-lg p-md-3">
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarCollapse">
-            <div class="navbar-nav">
-                <a href="#" class="nav-item nav-link active">Home</a>
-                <a href="#" class="nav-item nav-link">Profile</a>
-                <a href="#" class="nav-item nav-link">Messages</a>
-                <a href="#" class="nav-item nav-link disabled" tabindex="-1">Reports</a>
+            <div class="navbar-nav align-items-center">
+                <a href="/" class="navbar-brand">
+                    <img src="assets/images/logo2.png" height="50" alt="Logo">
+                </a>
+                <a routerLink="/" class="nav-item nav-link active">Početna</a>
+                <a routerLink="/create" *ngIf="userIsAdmin" class="nav-item nav-link ">Dodaj kurs</a>
+                <a routerLink="/courses" class="nav-item nav-link ">Kursevi</a>
+                <a routerLink="#" class="nav-item nav-link ">Kontakt</a>
+                <a routerLink="#" class="nav-item nav-link ">O nama</a>
+                <a routerLink="/orders" *ngIf="userIsAdmin" class="nav-item nav-link ">Članarine</a>
             </div>
-            <div class="navbar-nav ml-auto">
-                <a href="#" class="nav-item nav-link">Login</a>
+            <div class="navbar-nav nav-link ml-auto">
+                <a routerLink="/login" *ngIf="!userIsAuthenticated" class="nav-item nav-link">Prijavi se</a>
+                <a routerLink="/signup" *ngIf="!userIsAuthenticated" class="nav-item nav-link">Registruj se</a>
+            </div>
+            <div class="navbar-nav nav-link nav-link">
+                <button mat-button *ngIf="userIsAuthenticated" (click)="onLogout()">Odjavi se</button>
             </div>
         </div>
     </nav>

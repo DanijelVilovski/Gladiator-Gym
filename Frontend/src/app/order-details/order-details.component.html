@@ -1,0 +1,23 @@
+  <div class="form">
+      <p>Podaci o korisniku</p>
+      <hr>
+      <mat-card>
+          <form (submit)="order(orderForm)" #orderForm="ngForm">
+  
+            <mat-form-field>
+              <input matInput name="name" ngModel type="text" placeholder="Ime i prezime" #nameInput="ngModel" required>
+              <mat-error *ngIf="nameInput.invalid">Unesite ime i prezime.</mat-error>
+            </mat-form-field>
+  
+            <mat-form-field>
+              <input matInput name="phone" ngModel type="text" placeholder="Broj telefona" #phoneInput="ngModel" required>
+              <mat-error *ngIf="phoneInput.invalid">Unesite broj telefona.</mat-error>
+            </mat-form-field>
+  
+            <button mat-raised-button color="accent" type="submit">Potvrdi</button>
+          </form>
+      </mat-card>
+  </div>
+  <div class="alert alert-success" role="alert" *ngIf='alert'>
+    Hvala što ste poručili proizvode. Dobićete email sa detaljima kupovine. Idi na&nbsp;<a href="#" class="alert-link">početnu.</a>
+  </div>
