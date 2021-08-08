@@ -28,6 +28,8 @@ import { ErrorComponent } from './error/error.component';
 import { OrderDetailsComponent } from './order-details/order-details.component';
 import { OrdersComponent } from './orders/orders.component';
 import { FooterComponent } from './footer/footer.component';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { ContactComponent } from './contact/contact.component';
 
 
 @NgModule({
@@ -42,7 +44,9 @@ import { FooterComponent } from './footer/footer.component';
     ErrorComponent,
     OrderDetailsComponent,
     OrdersComponent,
-    FooterComponent
+    FooterComponent,
+    AboutUsComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,

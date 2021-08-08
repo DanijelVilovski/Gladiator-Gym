@@ -1,8 +1,7 @@
 .example-card {
     max-width: 350px;
     display: block;
-    margin: 25px;
-    background-image:url('../../../assets/images/home2.jpg');
+    margin: 55px;
     opacity: 80%;
     background-size: cover;
     color: white;
@@ -10,6 +9,11 @@
     text-shadow: 2px 1px 0 #000000;
     text-align: center;
   }
+
+.div {
+  background: url('../../../assets/images/course-list.jpg');
+  background-size: cover;
+}
 
 .desc {
     text-align: center;
