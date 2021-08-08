@@ -8,13 +8,13 @@
       <form (submit)="onLogin(loginForm)" #loginForm="ngForm" *ngIf="!isLoading">
         <div class="inputBx">
           <span>E-mail</span>
-          <input name="email" ngModel type="email" #emailInput="ngModel" required email>
-          <mat-error *ngIf="emailInput.invalid"></mat-error>
+          <input name="email" matInput ngModel type="email" #emailInput="ngModel" required email>
+          <mat-error *ngIf="emailInput.invalid">s</mat-error>
         </div >
         <div class="inputBx">
           <span>Lozinka</span>
-          <input type="password" name="password" ngModel #passwordInput="ngModel" required>
-          <mat-error *ngIf="passwordInput.invalid"></mat-error>
+          <input type="password" matInput name="password" ngModel #passwordInput="ngModel" required>
+          <mat-error *ngIf="passwordInput.invalid">s</mat-error>
         </div>
         <div class="inputBx">
           <input type="submit" *ngIf="!isLoading" value="Prijavi se" name="">

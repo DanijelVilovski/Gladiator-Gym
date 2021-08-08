@@ -9,6 +9,8 @@ const ordersRoutes = require('./routes/orders');
 
 //express app
 const app = express();
+const stripe = require('stripe')('sk_test_51JMCMeAhEqxGmwGxG6FdQwZhTp8B2Msc7wzYfm84GPtVZWYD733bEliIKDNE1gshifTniTsnqZI6xD5Ii2l91maP00q0KlLfdb');
+
 
 //connect to mongodb
 const dbUPI = 'mongodb+srv://danijel:wO0tsn2RbSa4P6Ic@cluster0.myqfw.mongodb.net/WEB-Projekat?retryWrites=true&w=majority';
@@ -24,6 +26,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use("/images", express.static(path.join("../Backend/images")));
 
+
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   //dozvola za pristup resursima na serveru od strane drugih domena
@@ -38,6 +41,24 @@ app.use((req, res, next) => {
   //dozvovavanje dodatnih headera, metoda
   next();
 });
+
+app.post('/payment', (req,res) => {
+  console.log(req.body);
+  var charge = stripe.charges.create({
+    amount: 23000,
+    currency: 'RSD',
+    source: req.body.token
+  }, (err, charge)=> {
+    if(err) {
+      throw err;
+    }
+    res.json({
+      success: true,
+      message: "Payment done!"
+    })
+    
+  });
+})
 
 app.use("/api/courses", coursesRoutes);
 app.use("/api/user", usersRoutes);

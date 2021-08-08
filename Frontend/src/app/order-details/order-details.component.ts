@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { OrderService } from './order.service';
 
@@ -11,7 +12,7 @@ import { OrderService } from './order.service';
 export class OrderDetailsComponent implements OnInit {
   alert = false;
 
-  constructor(private orderService: OrderService) { }
+  constructor(private orderService: OrderService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -21,6 +22,7 @@ export class OrderDetailsComponent implements OnInit {
       return;
     this.orderService.orderDetails(form.value.name, form.value.phone);
     this.alert = true;
+    
   }
 
 }

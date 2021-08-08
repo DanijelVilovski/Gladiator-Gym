@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-
+import { NgxStripeModule } from 'ngx-stripe';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -30,6 +30,7 @@ import { OrdersComponent } from './orders/orders.component';
 import { FooterComponent } from './footer/footer.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { ContactComponent } from './contact/contact.component';
+import { PaymentComponent } from './payment/payment.component';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { ContactComponent } from './contact/contact.component';
     OrdersComponent,
     FooterComponent,
     AboutUsComponent,
-    ContactComponent
+    ContactComponent,
+    PaymentComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +66,8 @@ import { ContactComponent } from './contact/contact.component';
     MatExpansionModule,
     MatProgressSpinnerModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgxStripeModule.forRoot('pk_test_51JMCMeAhEqxGmwGxWHerB5zjaV1awCRBGIitVMcLLLWQNepVGgGbO82CCRw8GkV7YYZIhUv7MOeqiiDUhVjq1iGg00O3h0yO8y')
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
