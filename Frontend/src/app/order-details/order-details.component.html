@@ -13,6 +13,10 @@
               <input matInput name="phone" ngModel type="text" placeholder="Broj telefona" #phoneInput="ngModel" required>
               <mat-error *ngIf="phoneInput.invalid">Unesite broj telefona.</mat-error>
             </mat-form-field>
+
+
+            <ngx-stripe-card [options]="cardOptions"></ngx-stripe-card>
+
   
             <button mat-raised-button color="accent" type="submit">Potvrdi</button>
           </form>

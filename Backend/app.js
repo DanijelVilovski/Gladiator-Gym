@@ -45,7 +45,7 @@ app.use((req, res, next) => {
 app.post('/payment', (req,res) => {
   console.log(req.body);
   var charge = stripe.charges.create({
-    amount: 23000,
+    amount: req.body.price * 100,
     currency: 'RSD',
     source: req.body.token
   }, (err, charge)=> {

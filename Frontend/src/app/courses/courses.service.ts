@@ -86,7 +86,7 @@ export class CoursesService {
                 this.router.navigate(["/courses"]);
             });
     }
-
+    
     deleteCourse(courseId: string) {
         this.http.delete("http://localhost:3000/api/courses/" + courseId)
           .subscribe(() => {

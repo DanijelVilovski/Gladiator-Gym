@@ -30,8 +30,6 @@ import { OrdersComponent } from './orders/orders.component';
 import { FooterComponent } from './footer/footer.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { ContactComponent } from './contact/contact.component';
-import { PaymentComponent } from './payment/payment.component';
-
 
 @NgModule({
   declarations: [
@@ -47,9 +45,8 @@ import { PaymentComponent } from './payment/payment.component';
     OrdersComponent,
     FooterComponent,
     AboutUsComponent,
-    ContactComponent,
-    PaymentComponent
-  ],
+    ContactComponent
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,

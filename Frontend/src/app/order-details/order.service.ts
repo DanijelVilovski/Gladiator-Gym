@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
+import { Router } from '@angular/router';
 
 import { Order } from './order.model';
 import { Subject } from 'rxjs';
@@ -11,7 +12,7 @@ export class OrderService {
   private orders: Order[] = [];
   private ordersUpdated = new Subject<Order[]>();
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   orderDetails(name: string, phone: string) {
     const course = localStorage.getItem("nazivKursa") || "{}";
@@ -22,6 +23,7 @@ export class OrderService {
     }, error => {
       console.log(error);
     });
+
   }
 
   getOrderUpdateListener() {
