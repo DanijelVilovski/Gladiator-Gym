@@ -48,15 +48,8 @@ exports.updateCourse = (req, res, next) => {
 };
 
 exports.getCourses = (req, res, next) => {
-    const pageSize = +req.query.pagesize;
-    const currentPage = +req.query.page;
     const courseQuery = Course.find();
     let fetchedCourses;
-    if (pageSize && currentPage) {
-      courseQuery
-      .skip(pageSize * (currentPage - 1))
-      .limit(pageSize);
-    }
     courseQuery
     .then(documents => {
       fetchedCourses = documents;

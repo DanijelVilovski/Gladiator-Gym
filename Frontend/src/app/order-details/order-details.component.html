@@ -3,11 +3,7 @@
       <hr>
       <mat-card>
           <form (submit)="order(orderForm)" #orderForm="ngForm">
-  
-            <mat-form-field>
-              <input matInput name="name" ngModel type="text" placeholder="Ime i prezime" #nameInput="ngModel" required>
-              <mat-error *ngIf="nameInput.invalid">Unesite ime i prezime.</mat-error>
-            </mat-form-field>
+
   
             <mat-form-field>
               <input matInput name="phone" ngModel type="text" placeholder="Broj telefona" #phoneInput="ngModel" required>
@@ -23,5 +19,5 @@
       </mat-card>
   </div>
   <div class="alert alert-success" role="alert" *ngIf='alert'>
-    Hvala što ste poručili proizvode. Dobićete email sa detaljima kupovine. Idi na&nbsp;<a href="#" class="alert-link">početnu.</a>
+    Hvala Vam što trenirate kod nas. Idi na&nbsp;<a href="#" class="alert-link">početnu.</a>
   </div>

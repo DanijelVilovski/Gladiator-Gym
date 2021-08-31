@@ -32,8 +32,8 @@ export class AuthService {
         return this.isAdminListener.asObservable();
     }
 
-    createUser(email: string, password: string){
-        const authData: AuthData = {email: email, password: password};
+    createUser(email: string, password: string, fullName: string){
+        const authData: AuthData = {email: email, password: password, fullName: fullName};
         this.http.post("http://localhost:3000/api/user/signup", authData)
             .subscribe(() => {
                 this.router.navigate(["/login"]);
@@ -43,11 +43,12 @@ export class AuthService {
     }
 
     login(email: string, password: string) {
-        const authData: AuthData = {email: email, password: password};
-        this.http.post<{token: string, expiresIn: number, isAdmin: boolean}>("http://localhost:3000/api/user/login", authData)
+        const authData: AuthData = {email: email, password: password, fullName: ''};
+        this.http.post<{token: string, expiresIn: number, isAdmin: boolean, fullName: string}>("http://localhost:3000/api/user/login", authData)
             .subscribe(response => {
                 const token = response.token;
                 const isAdmin = response.isAdmin;
+                const fullName = response.fullName;
                 this.token = token;
                 if (token) {
                     //nakon 3600 sekundi ce sesija isteci i dolazi do logouta
@@ -59,7 +60,7 @@ export class AuthService {
                     this.isAdminListener.next(this.isAdmin);
                     const now = new Date();
                     const expirationDate = new Date(now.getTime() + expiresInDuration * 1000); 
-                    this.saveAuthData(token, expirationDate, isAdmin);
+                    this.saveAuthData(token, expirationDate, isAdmin, fullName);
                     this.router.navigate(["/"]);
                 } 
             }, error => {
@@ -100,10 +101,11 @@ export class AuthService {
         }, duration * 1000);
     }
 
-    private saveAuthData(token: string, expirationDate: Date, isAdmin: boolean) {
+    private saveAuthData(token: string, expirationDate: Date, isAdmin: boolean, fullName: string) {
         localStorage.setItem("token", token);
         localStorage.setItem("expiration", expirationDate.toISOString());
         localStorage.setItem("isAdmin",  new Boolean(this.isAdmin).toString());
+        localStorage.setItem("fullName", fullName);
     }
 
     private clearAuthData() {

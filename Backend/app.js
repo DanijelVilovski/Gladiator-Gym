@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const coursesRoutes = require('./routes/courses');
 const usersRoutes = require('./routes/user');
 const ordersRoutes = require('./routes/orders');
+const contactsRoutes = require('./routes/contact');
 
 //express app
 const app = express();
@@ -63,6 +64,6 @@ app.post('/payment', (req,res) => {
 app.use("/api/courses", coursesRoutes);
 app.use("/api/user", usersRoutes);
 app.use("/api/orders", ordersRoutes);
-
+app.use("/api/contact", contactsRoutes);
 
 module.exports = app;

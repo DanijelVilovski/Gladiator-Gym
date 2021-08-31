@@ -1,3 +1,9 @@
+.main {
+  height: 100vh;
+  background-color: white;
+  background-size: cover;
+}
+
 mat-form-field,
 textarea {
   width: 100%;
@@ -23,4 +29,18 @@ input[type="file"] {
 mat-card {
   margin-top: 100px;
   display: block;
+}
+
+form {
+  width: 30%;
+  display: block;
+  margin: 200px auto;
+  padding: 30px;
+  background-color: lightgray;
+  border-radius: 10px;
+}
+
+button {
+  color: black;
+  background-color: #ffd105;
 }

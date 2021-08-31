@@ -1,27 +1,47 @@
-
-
-<section>
+<section class="jumbotron">
   <div class="imgBx">
-    <img src="assets/images/signup2.jpg">
+    <img src="assets/images/signup.jpg">
   </div>
   <div class="contentBx">
-    <div class="formBx">
+      <div class="formBx">
       <h2>Registruj se</h2>
-      <form (submit)="onSignup(signupForm)" (submit)="onSignup(signupForm)" #signupForm="ngForm" *ngIf="!isLoading">
-        <div class="inputBx">
-          <span>E-mail</span>
-          <input name="email" ngModel type="email"  #emailInput="ngModel" required email>
-          <mat-error *ngIf="emailInput.invalid"></mat-error>
-        </div >
-        <div class="inputBx">
-          <span>Lozinka</span>
-          <input type="password" name="password" ngModel matInput  #passwordInput="ngModel" required>
-          <mat-error *ngIf="passwordInput.invalid"></mat-error>
-        </div>
-        <div class="inputBx">
-          <input type="submit" *ngIf="!isLoading" value="Registruj se" name="">
-        </div >
-      </form>
-    </div>
+            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                <div class="inputBx">
+                    <span>Ime i prezime</span>
+                    <input type="text" formControlName="fullName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.fullName.errors }" />
+                    <div *ngIf="submitted && f.fullName.errors" class="invalid-feedback">
+                        <div *ngIf="f.fullName.errors.required">Ime i prezime su obavezni!</div>
+                    </div>
+                </div>
+                <div class="inputBx">
+                    <span>E-mail</span>
+                    <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                        <div *ngIf="f.email.errors.required">Email je obavezan!</div>
+                        <div *ngIf="f.email.errors.email">Email adresa mora biti validna!</div>
+                    </div>
+                </div>
+                <div class="inputBx">
+                    <span>Lozinka</span>
+                    <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                        <div *ngIf="f.password.errors.required">Lozinka je obavezna!</div>
+                        <div *ngIf="f.password.errors.minlength">Lozinka mora imati najmanje 6 karaktera!</div>
+                    </div>
+                </div>
+                <div class="inputBx">
+                    <span>Potvrdi lozinku</span>
+                    <input type="password" formControlName="confirmPassword" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }" />
+                    <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
+                        <div *ngIf="f.confirmPassword.errors.required">Potvrđivanje lozinke je obavezne!</div>
+                        <div *ngIf="f.confirmPassword.errors.mustMatch">Lozinke moraju biti iste!</div>
+                    </div>
+                </div>
+                <div class="inputBx">
+                    
+                    <input type="submit" *ngIf="!isLoading" value="Registruj se" name="">
+                </div>
+            </form>
+      </div>
   </div>
 </section>

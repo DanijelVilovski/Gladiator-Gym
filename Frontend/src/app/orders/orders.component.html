@@ -1,20 +1,29 @@
-<mat-card class="example-card" *ngFor="let order of orders">
 
-    <mat-card-content>
-      <p>
-        Ime i prezime: {{ order.name }}
-      <p>
-      <p>
-        Broj telefona: {{ order.phone }}
-      <p>
-      <p>
-        Cena: {{ order.price }}
-      <p>
-      <p>
-        Naziv: {{ order.course }}
-      <p>
-    </mat-card-content>
 
-</mat-card>
+<p *ngIf="orders.length <= 0" id="noAdded">Nema registrovanih članarina!</p>
 
-<p *ngIf="orders.length <= 0" id="noAdded">No orders added yet!</p>
+<section class="cart-section" *ngIf="orders.length > 0">
+  <div class="container">
+      <h2>Registrovane članarine</h2>
+      <div *ngIf="orders">
+      <table>
+      <tr>    
+          <th>Ime i prezime</th>
+          <th>Broj telefona</th>
+          <th>Cena</th>
+          <th>Članarina</th>
+          <th>Datum</th>
+          <th>Aktivan</th>
+      </tr>
+      <tr *ngFor="let order of orders">
+          <td>{{ order.name }}</td>
+          <td>{{ order.phone }}</td>
+          <td>{{ order.price }} RSD</td>
+          <td>{{ order.course }}</td>
+          <td>{{ stringAsDate(order.createdAt) | date:'dd.MM.yyyy' }}</td>
+          <td>{{ order.isActive }}</td>
+      </tr>
+      </table><br>
+      </div>
+  </div>
+</section>

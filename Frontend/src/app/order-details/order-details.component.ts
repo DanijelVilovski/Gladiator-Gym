@@ -56,7 +56,8 @@ export class OrderDetailsComponent implements OnInit {
   order(form: NgForm) {
     if (form.invalid)
       return;
-    this.orderService.orderDetails(form.value.name, form.value.phone);
+    const fullName = localStorage.getItem("fullName") || "{}";
+    this.orderService.orderDetails(fullName, form.value.phone, form.value.isActive);
     const price = localStorage.getItem("cenaKursa") || ' ';
     const name = form.value.name;
     this.stripeService

@@ -59,15 +59,15 @@
   }
 
   #section-1{
-    padding:35px;
-    background: black;
+    padding:3px;
+    background: #ffd105;
     color:#fff;
     font-size:24px;
     text-align:center;
   }
 
   #section-2{
-    background-image:url('../../assets/images/home2.jpg');
+    background-image:url('../../assets/images/home.jpg');
     background-size:cover;
     background-position:center;
     height:100vh;
@@ -76,9 +76,28 @@
     text-align:center;
   }
 
-  #section-4{
-    padding:20px;
-    background:#926239;
-    color:#fff;
-    text-align:center;
+  .text {
+    padding-top: 130px;
+    text-align: justify;
+    font-size: 20px;
+    letter-spacing: 2px;
+    line-height: 150%;
+    text-shadow: 1px 1px black;
+    width: 600px;
+  }
+
+  .button2 {
+    display: flex;
+    width:17%;
+    font-size:28px;
+    font-weight: initial;
+    text-shadow: 4px 1px 0 #000000;
+    background: rgb(26, 25, 25, 0.7);
+    text-decoration: none;
+    color: #ffd105;
+    border:#000000 1px solid;
+    padding:17px 25px;
+    border-radius:10px;
+    margin-top:80px;
+    margin-left: 180px;
   }

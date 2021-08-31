@@ -16,6 +16,10 @@ import { MatListModule } from '@angular/material/list';
 import { MatDialogModule} from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatSelectModule } from '@angular/material/select';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatRadioModule } from '@angular/material/radio';
 import { AddUpdateCourseComponent } from './courses/add-update-course/add-update-course.component';
 import { CourseListComponent } from './courses/course-list/course-list.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
@@ -30,6 +34,7 @@ import { OrdersComponent } from './orders/orders.component';
 import { FooterComponent } from './footer/footer.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { ContactComponent } from './contact/contact.component';
+import { UsersComponent } from './users/users.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +50,8 @@ import { ContactComponent } from './contact/contact.component';
     OrdersComponent,
     FooterComponent,
     AboutUsComponent,
-    ContactComponent
+    ContactComponent,
+    UsersComponent
     ],
   imports: [
     BrowserModule,
@@ -62,6 +68,9 @@ import { ContactComponent } from './contact/contact.component';
     ReactiveFormsModule,
     MatExpansionModule,
     MatProgressSpinnerModule,
+    MatCheckboxModule,
+    MatMenuModule,
+    MatRadioModule,
     HttpClientModule,
     FormsModule,
     NgxStripeModule.forRoot('pk_test_51JMCMeAhEqxGmwGxWHerB5zjaV1awCRBGIitVMcLLLWQNepVGgGbO82CCRw8GkV7YYZIhUv7MOeqiiDUhVjq1iGg00O3h0yO8y')

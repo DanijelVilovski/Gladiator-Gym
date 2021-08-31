@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 import { AuthService } from "../auth/auth.service";
 
@@ -14,7 +15,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   private authListenerSubs!: Subscription;
   private isAdminListenerSubs!: Subscription;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.userIsAuthenticated = this.authService.getIsAuth();
@@ -35,6 +36,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
   
   onLogout() {
     this.authService.logout();
+  }
+
+  onProfile() {
+    this.router.navigate(["/profile"]);
   }
 
   ngOnDestroy() {

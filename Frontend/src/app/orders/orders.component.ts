@@ -22,6 +22,10 @@ export class OrdersComponent implements OnInit, OnDestroy {
     });
   }
 
+  stringAsDate(dateStr: string) {
+    return new Date(dateStr);
+  }
+
   ngOnDestroy(): void {
     this.ordersSub.unsubscribe();
   }

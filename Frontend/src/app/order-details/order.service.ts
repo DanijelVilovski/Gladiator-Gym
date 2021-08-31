@@ -14,10 +14,10 @@ export class OrderService {
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  orderDetails(name: string, phone: string) {
+  orderDetails(name: string, phone: string, isActive: boolean) {
     const course = localStorage.getItem("nazivKursa") || "{}";
     const price = localStorage.getItem("cenaKursa") || "{}";
-    const orderData: Order = {name: name, phone: phone, course: course, price: price};
+    const orderData: Order = {name: name, phone: phone, course: course, price: price, createdAt: '', isActive: isActive};
     this.http.post("http://localhost:3000/api/orders/sendOrder", orderData)
     .subscribe(() => {
     }, error => {

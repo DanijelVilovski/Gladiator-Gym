@@ -10,11 +10,13 @@
                     <img src="assets/images/logo2.png" height="50" alt="Logo">
                 </a>
                 <a routerLink="/" class="nav-item nav-link active">Početna</a>
-                <a routerLink="/create" *ngIf="userIsAdmin" class="nav-item nav-link ">Dodaj kurs</a>
-                <a routerLink="/courses" class="nav-item nav-link ">Kursevi</a>
+                <a routerLink="/courses" class="nav-item nav-link ">Treniraj odmah</a>
                 <a routerLink="/contact" class="nav-item nav-link ">Kontakt</a>
                 <a routerLink="/about-us" class="nav-item nav-link ">O nama</a>
+                <a routerLink="/create" *ngIf="userIsAdmin" class="nav-item nav-link ">Dodaj kurs</a>
                 <a routerLink="/orders" *ngIf="userIsAdmin" class="nav-item nav-link ">Članarine</a>
+                <a routerLink="/users" *ngIf="userIsAdmin" class="nav-item nav-link ">Korisnici</a>
+                
             </div>
             <div class="navbar-nav nav-link ml-auto">
                 <a routerLink="/login" *ngIf="!userIsAuthenticated" class="nav-item nav-link">Prijavi se</a>

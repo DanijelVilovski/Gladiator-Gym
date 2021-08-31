@@ -31,6 +31,19 @@ exports.getOrders = (req, res, next) => {
     orderQuery
     .then(documents => {
         fetchedOrders = documents;
+        fetchedOrders.forEach(order => {
+          const date1 = order.createdAt;
+          const date2 = new Date();
+          
+          var Difference_In_Time = date2.getTime() - date1.getTime();
+      
+          // To calculate the no. of days between two dates
+          var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+
+          if (Difference_In_Days > 30) {
+            order.isActive = false;
+          }
+        })
       res.status(200).json({
         message: "Orders fetched successfully!",
         orders: fetchedOrders

@@ -3,4 +3,6 @@ export interface Order {
     phone: string;
     course: string;
     price: string;
+    createdAt: string;
+    isActive: boolean;
 }

@@ -1,53 +1,54 @@
-<mat-card>
-    <mat-spinner *ngIf="isLoading"></mat-spinner>
-    <form [formGroup]="form" (submit)="onSaveCourse()"  *ngIf="!isLoading">
-        <mat-form-field>
-            <input 
-                matInput
-                type="text" 
-                formControlName="name" 
-                placeholder="Naziv kursa: "
-                required
-            >
-            <mat-error *ngIf="form.get('name')!.hasError('required')">Please enter a course name!</mat-error>
-        </mat-form-field>
+<div class="main"> 
 
-        <mat-form-field>
-            <input 
-                matInput
-                type="text" 
-                formControlName="price"
-                placeholder="Cena kursa: "
-                required 
-            >
-            <mat-error *ngIf="form.get('price')!.hasError('required')">Please enter a course price!</mat-error>
-        </mat-form-field>
+        <mat-spinner *ngIf="isLoading"></mat-spinner>
+        <form [formGroup]="form" (submit)="onSaveCourse()" *ngIf="!isLoading">
+            <mat-form-field>
+                <input 
+                    matInput
+                    type="text" 
+                    formControlName="name" 
+                    placeholder="Naziv: "
+                    required
+                >
+                <mat-error *ngIf="form.get('name')!.hasError('required')">Unesite ime!</mat-error>
+            </mat-form-field>
 
-        <div>
-            <button mat-stroked-button type="button" (click)="filePicker.click()" color="warn">Izaberi sliku</button>
-            <input type="file" #filePicker (change)="onImagePicked($event)">
-        </div>
+            <mat-form-field>
+                <input 
+                    matInput
+                    type="text" 
+                    formControlName="price"
+                    placeholder="Cena: "
+                    required 
+                >
+                <mat-error *ngIf="form.get('price')!.hasError('required')">Unesite cenu!</mat-error>
+            </mat-form-field>
 
-        <div class="image-preview" *ngIf="imagePreview !== '' && imagePreview && form.get('image')!.valid">
-            <img [src]="imagePreview" [alt]="form.value.name">
-        </div>
-        
-        <mat-form-field>
-            <textarea
-                matInput
-                rows="4" 
-                formControlName="description"  
-                placeholder="Opis: "
-                required
-            >
-            </textarea> 
-            <mat-error *ngIf="form.get('description')!.hasError('required')"> Please enter a course description! </mat-error>
-        </mat-form-field>
-        <button 
-            mat-raised-button
-            color="warn"
-            type="submit">Save course
-        </button>
-        
-    </form>
-</mat-card>
+            <div>
+                <button mat-stroked-button type="button" (click)="filePicker.click()" >Izaberite sliku</button>
+                <input type="file" #filePicker (change)="onImagePicked($event)">
+            </div>
+
+            <div class="image-preview" *ngIf="imagePreview !== '' && imagePreview && form.get('image')!.valid">
+                <img [src]="imagePreview" [alt]="form.value.name">
+            </div>
+            
+            <mat-form-field>
+                <textarea
+                    matInput
+                    rows="4" 
+                    formControlName="description"  
+                    placeholder="Opis: "
+                    required
+                >
+                </textarea> 
+                <mat-error *ngIf="form.get('description')!.hasError('required')"> Unesite opis! </mat-error>
+            </mat-form-field>
+            <button 
+                mat-raised-button
+                type="submit">Save course
+            </button>
+            
+        </form>
+   
+</div>

@@ -7,32 +7,16 @@
   /*font-family: 'Poppins', sans-serif;*/
 }
 
-.content {
-    margin-top: 40px;
-}
-
 .contact {
   position: relative;
   min-height: 100vh;
-  padding: 50px 100px;
+  padding: 20px 100px 50px 100px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background: url('../../assets/images/contact.jpg');
+  background: url('../../assets/images/signup2.jpg');
   background-size: cover;
-}
-
-.contact .content {
-  max-width: 800px;
-  text-align: center;
-}
-
-.contact .content h2 {
-  font-size: 40px;
-  margin-top: 12px;
-  font-weight: 600;
-  color: #ffd105;
 }
 
 .container {
@@ -40,19 +24,66 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 30px;
+  margin-top: 20px;
 }
 
 .container .contactInfo {
-  width: 50%;
+  width: 30%;
   display: flex;
   flex-direction: column;
+}
+
+.container .socialMedia {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.socialMedia .box2 {
+  position: relative;
+  padding: 20px 0;
+  display: flex;
+}
+
+a {
+  text-decoration: none;
+}
+
+.socialMedia .icon {
+  min-width: 45px;
+  height: 45px;
+  color: white;
+  border: 2px solid white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  font-size: 18px;
+  margin: 10px;
+}
+
+.socialMedia .icon:hover {
+  background: white;
+  color: #724448;
 }
 
 .container .contactInfo .box {
   position: relative;
   padding: 20px 0;
   display: flex;
+}
+
+iframe {
+  border-radius: 10px;
+  opacity: 0.9;
+}
+
+iframe:hover {
+  opacity: 1;
+}
+
+.contactInfo{
+  margin-top: 50px;
 }
 
 .container .contactInfo .box .icon {
@@ -70,9 +101,8 @@
 .container .contactInfo .box .text {
   display: flex;
   margin-left: 20px;
-  font-size: 18px;
+  font-size: 16px;
   color: ivory;
-  text-shadow: 1px 1px black;
   flex-direction: column;
   font-weight: 300;
   line-height: 1.3rem;
@@ -81,72 +111,85 @@
 .container .contactInfo .box .text h3 {
    font-weight: 700;
    color: #ffd105;
-   font-size: 20px;
    text-shadow: 1px 1px black;
+   font-size: 20px;
 }
 
 .contactForm {
-  width: 40%;
-  margin-top: 14px;
-  padding: 40px;
-  background: ivory;
+  width: 34%;
+  padding: 30px;
+  opacity: 0.8;
+  margin-left: 100px;
+  background: #fff;
   border-radius: 10px;
+}
+
+.contactForm:hover {
+  opacity: 0.9;
 }
 
 .contactForm h2 {
   font-size: 30px;
-  color: #333;
+  color: black;
   font-weight: 600;
 }
 
-.contactForm .inputBox {
+.map {
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+  padding-bottom: 34px;
+}
+
+#how {
+  text-align: center;
+  padding-top: 20px;
+  font-weight: 600;
+  font-size: 26px;
+  margin: 0;
+  color: #1B212A;
+}
+
+.location {
+  background: #A8ACB6;
+}
+
+.contactForm mat-form-field {
   position: relative;
   width: 100%;
   margin-top: 10px;
 }
 
-.contactForm .inputBox input,
-.contactForm .inputBox textarea {
-  width: 100%;
-  padding: 5px 0;
-  font-size: 16px;
-  margin: 10px 0;
-  border: none;
-  border-bottom: 2px solid #333;
-  outline: none;
-  resize: none;
-}
-
-.contactForm .inputBox span {
-  position: absolute;
-  left: 0;
-  padding: 5px 0;
-  font-size: 16px;
-  margin: 10px 0;
-  pointer-events: none;
-  transition: 0.5s;
-  color: #666;
-}
-
-.contactForm .inputBox input:focus ~ span, 
-.contactForm .inputBox input:valid ~ span, 
-.contactForm .inputBox textarea:focus ~ span, 
-.contactForm .inputBox textarea:valid ~ span {
-  color: #724448;
-  font-size: 12px;
-  transform: translateY(-20px);
-}
-
-.contactForm .inputBox input[type="submit"] {
+.contactForm button {
   width: 100px;
   background: #ffd105;
   color: black;
-  font-weight: 500;
   border: none;
+  font-weight: 700;
   cursor: pointer;
   padding: 10px;
   font-size: 18px;
   border-radius: 10px;
+  margin-top: 16px;
+}
+
+::ng-deep .mat-focused .mat-form-field-label {
+  /*change color of label*/
+  color: #724448 !important;
+ }
+
+::ng-deep.mat-form-field-underline {
+  /*change color of underline*/
+  background-color: black !important;
+} 
+
+::ng-deep.mat-form-field-ripple {
+ /*change color of underline when focused*/
+ background-color: black !important;
+}
+
+.placeholder{
+  color: black;
 }
 
 @media (max-width: 991px) {
@@ -161,5 +204,8 @@
   }
   .container .contactInfo, .contactForm {
     width: 100%;
+  }
+  .container .socialMedia {
+    margin-right: 0;
   }
 }

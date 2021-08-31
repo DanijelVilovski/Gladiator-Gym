@@ -1,41 +1,27 @@
-
-<div class="div">
-  <div class="main">
-    <div>
-      <mat-card class="example-card" *ngFor="let course of courses">
-
-        <mat-card-content>
-          <p id="main">
-            {{ course.name }}
-          <p>
-        </mat-card-content>
-
-        <mat-card-content>
-          <div class="course-image">
-            <img [src]="course.imagePath" [alt]="course.name">
+  <section>
+    <div class="main">
+      <div>
+        <div class="example-card" [ngStyle]="{ 'background-image': 'url(' + course.imagePath + ')'}" *ngFor="let course of courses">
+          <form>
+            <div class="inputBox">
+                <h1 class="name">{{ course.name }}</h1>
+            </div>
+            <div class="inputBox">
+              <h1 class="price">{{ course. price }} RSD</h1>
           </div>
-        </mat-card-content>
-        
-        <mat-card-content>
-          <p class="desc">
-            {{ course. price }}din
-          </p>
-        </mat-card-content>
-
-        <mat-card-content>
-          {{ course.description }}
-        </mat-card-content> 
-
-        <mat-action-row *ngIf="userIsAdmin"> 
-          <a mat-button color="warn" [routerLink]="['/edit', course._id]">IZMENI</a>
-          <button mat-button color="warn" (click)="onDelete(course._id)">OBRIŠI</button>
-        </mat-action-row>
-
-        <button type="button" class="cart-btn" (click)="onBuy(course.name, course.price)">Treniraj odmah!</button>
-
-      </mat-card>
+          <div class="description">
+              <span><pre>{{ course.description }}</pre></span>
+          </div>
+        </form>
+          <button type="button" class="cart-btn" (click)="onBuy(course.name, course.price)">Treniraj odmah!</button>
+          <br>
+          <mat-action-row *ngIf="userIsAdmin"> 
+            <a mat-button class="button" color="warn" [routerLink]="['/edit', course._id]">IZMENI</a>
+            <button mat-button class="button" color="warn" (click)="onDelete(course._id)">OBRIŠI</button>
+          </mat-action-row>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-  <p *ngIf="courses.length <= 0" id="noAdded">  </p>
+</section>
+<p *ngIf="courses.length <= 0" id="noAdded">  </p>
   
