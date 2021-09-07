@@ -57,6 +57,7 @@ app.post('/payment', (req,res) => {
       success: true,
       message: "Payment done!"
     })
+    console.log("Log");
     
   });
 })
